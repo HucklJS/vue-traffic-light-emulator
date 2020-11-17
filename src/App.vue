@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-<!--    <HelloWorld msg="Hello VAsya"/>-->
-    <h1>Hello again</h1>
+    <TrafficLight/>
   </div>
 </template>
 
 <script>
-  // import HelloWorld from "./components/HelloWorld"
+  import TrafficLight from "./components/TrafficLight.vue"
   export default {
-    // components: {
-    //   HelloWorld
-    // }
+    components: {
+      TrafficLight
+    }
   }
 </script>
 
@@ -21,22 +20,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-h1 {
-  color: red;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

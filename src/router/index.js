@@ -15,7 +15,7 @@ const routes = [
     component: TrafficLight,
     props: {
       activeColor: 'red',
-      timer: 4000
+      timer: 10000
     }
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     component: TrafficLight,
     props: {
       activeColor: 'yellow',
-      timer: 7000
+      timer: 3000
     }
   },
   {
@@ -33,7 +33,7 @@ const routes = [
     component: TrafficLight,
     props: {
       activeColor: 'green',
-      timer: 12000
+      timer: 15000
     }
   }
 ]

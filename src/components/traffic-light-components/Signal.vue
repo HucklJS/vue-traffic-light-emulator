@@ -1,5 +1,5 @@
 <template>
-  <div :class="['signal', color+'-signal', {'dim-signal': isDim}, 'blink']"></div>
+  <div :class="['signal', color+'-signal', {'dim-signal': isDim}]"></div>
 </template>
 
 <script>

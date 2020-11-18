@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TrafficLight/>
+    <router-view/>
   </div>
 </template>
 

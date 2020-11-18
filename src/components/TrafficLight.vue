@@ -6,6 +6,8 @@
       :color="signal.color"
       :isActive="signal.color === activeColor"
       :isDim="!(signal.color === activeColor)"
+
+      :timer="timer"
     />
   </div>
 </template>
@@ -37,47 +39,49 @@
             isActive: false
           }
         ],
-        signalsOrder: this.setSignalsOrderByDefault(),
-
+        signalsOrder: this.setSignalsOrder(),
+        prevColor: null,
+        timerId: null
       }
+    },
+    computed: {
     },
     created() {
       console.log('created ' + this.activeColor)
+      this.prevColor = this.activeColor
       this.startTimer()
     },
     updated() {
       console.log('updated ' + this.activeColor)
       console.log(this.signalsOrder)
+      this.prevColor = this.activeColor
       this.startTimer()
     },
     watch: {
-      // 'signalsOrder': () => {
-      //   localStorage.setItem('signalsOrder', JSON.stringify(this.signalsOrder))
-      // }
+      activeColor() {
+        this.signalsOrder = this.setSignalsOrder()
+      }
     },
     methods: {
-      // getItFromLocalStorage(key) {
-      //   const item = localStorage.getItem(key)
-      //   if (item) {
-      //     return JSON.parse(item)
-      //   } else {
-      //     return null
-      //   }
-      // },
       startTimer() {
-        setTimeout(() => {
-          this.$router.push(`/${this.signalsOrder[1]}`)
-          this.signalsOrder.push(this.signalsOrder.shift())
+        if (this.timerId) {
+          clearTimeout(this.timerId)
+        }
+        this.timerId = setTimeout(() => {
+          const nextColor = this.signalsOrder[1]
+          this.$router.push(`/${nextColor}`)
+          this.prevColor = this.activeColor
+          console.log(this.prevColor)
         }, this.timer)
       },
-      setSignalsOrderByDefault() {
+      setSignalsOrder() {
         switch (this.activeColor) {
           case 'red':
             return ['red', 'yellow', 'green']
           case 'yellow':
-            return ['yellow', 'green', 'red']
+            return ['yellow', this.prevColor === 'green' ? 'red' : 'green', this.prevColor || 'red']
           case 'green':
-            return ['green', 'red', 'yellow']
+            return ['green','yellow', 'red']
         }
       }
     }

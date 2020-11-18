@@ -1,5 +1,5 @@
 <template>
-  <div :class="['signal', color+'-signal', {'dim-signal': isDim}]"></div>
+  <div :class="['signal', color+'-signal', {'dim-signal': isDim}]">{{isActive ? timer / 1000 : null}}</div>
 </template>
 
 <script>
@@ -8,7 +8,8 @@
     props: {
       color: String,
       isActive: Boolean,
-      isDim: Boolean
+      isDim: Boolean,
+      timer: Number
     }
   }
 </script>

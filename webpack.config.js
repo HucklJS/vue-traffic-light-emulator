@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
+  devServer: {
+    contentBase: './dist',
+    port: 9000
+  },
   module: {
     rules: [
       {
